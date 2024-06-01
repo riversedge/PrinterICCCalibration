@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Replace with IT8.7/2 target for optimal results
+../bin/scanin -v -dipn ScannerCalibration.tiff ../ref/it8.cht ../ref/it8.cie
+../bin/colprof -v -D"$1" -qm -ax -ua ScannerCalibration

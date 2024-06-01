@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ -z "$2" ] ; then
+   echo "Usage $0 [Scanned TIFF base] [Reference Name]"
+   echo "e.g., $0 EPSON-ET2800-Plainpaper CustomET2800Chart"
+   echo ""
+   exit 0
+fi
+
+echo ../bin/scanin -v -dipn -c "${1}.tiff" "${2}".cht EPSON-ET2800-Scanner.icc "${2}"
+../bin/scanin -v -dipn -c "${1}.tiff" "${2}".cht EPSON-ET2800-Scanner.icc "${2}"
+
+echo mv -v "${2}".ti3 "${1}.ti3"
+mv -v "${2}".ti3 "${1}.ti3"
+
+# If it's a CMYK printer...
+#cp -v "${1}.ti3" "test.ti3"
+#colprof -v -qm -b -cmt -dpp test
+#93% - x axis black level 0% until...
+#87% - y axis black level at that jump mark
+#65% - 1.0 would be linear, sets the concaveness to match
+# xicclu -g -kz -l290 -fif -ir test.icc
+# xicclu -g -kx -l290 -fif -ir test.icc
+# xicclu -g -kp 0 0 .93 .87 1.0 -l290 -fif -ir test.icc
+# xicclu -g -kp 0 0 .93 .87 0.65 -l290 -fif -ir test.icc
+# run colprof
+# xicclu -g -fb -ir Epson_ET-2800-PlainPaper.icc
+#../bin/colprof -v -D"$1" -qm -kp 0 0 .93 .87 0.65 -S ../ref/sRGB.icm -cmt -dpp "$1"
+
+echo ../bin/colprof -v -D"$1" -qm -S ../ref/sRGB.icm -cmt -dpp "$1"
+../bin/colprof -v -D"$1" -qm -S ../ref/sRGB.icm -cmt -dpp "$1"

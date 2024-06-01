@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$2" == "--refined" ] ; then 
+   # If there's already been a basic calibration, you can make it a lot better by 
+   # doing this refinement.   In fact, it's probably necessary.   My first calibration
+   # created targets that had grey instead of white and by doing this I was able
+   # to make some pretty good targets with the scanner as a 2nd pass
+   ../bin/targen -v -d2 -f962 -c EPSON-ET2800-Default.icc "$1"
+else
+   ../bin/targen -v -d2 -f962 "$1"
+fi
+
+# Set to print an 8.5x11 full sheet as a TIFF
+../bin/printtarg -v -s -iSS -p letter -T 300 "$1"
