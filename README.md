@@ -13,3 +13,5 @@ To run:
 3) Print a chart and scan it back in.   Then run tiff2icc in order to create a custom profile.   
 
 Your mileage may vary!  Mine seemed to turn out at least better than the printer defaults, but don't blame me if you end up with something weird.   Nobody *recommends* using a built-in flatbed scanner for doing printer color calibration, but if you want to give it a try, this is at least an instructional path on how to do that.
+
+If you get a really weird profile (something that looks like an exploding star for instance) then it's probably a bad scan.   You may have to try multiple times to get a good result.  Some might never work, especially some textured papers where the scan might end up creating such significant issues to the block color that there's just no way to profile it.

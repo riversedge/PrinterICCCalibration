@@ -7,8 +7,8 @@ if [ -z "$2" ] ; then
    exit 0
 fi
 
-echo ../bin/scanin -v -dipn -c "${1}.tiff" "${2}".cht EPSON-ET2800-Scanner.icc "${2}"
-../bin/scanin -v -dipn -c "${1}.tiff" "${2}".cht EPSON-ET2800-Scanner.icc "${2}"
+echo ../bin/scanin -v -dipn -c "${1}.tiff" "${2}".cht ScannerCalibration.icc "${2}"
+../bin/scanin -v -dipn -c "${1}.tiff" "${2}".cht ScannerCalibration.icc "${2}"
 
 echo mv -v "${2}".ti3 "${1}.ti3"
 mv -v "${2}".ti3 "${1}.ti3"
